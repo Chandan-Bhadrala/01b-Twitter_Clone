@@ -1,10 +1,10 @@
 const CreatePost = () => {
   return (
-    <div className="mt-4">
+    <div className="py-4">
       {/* Top-section */}
-      <div className="flex items-center justify-around font-semibold text-xl border-b border-amber-200 pb-4">
-        <div className="hover:cursor-pointer hover:bg-amber-200 ">For you</div>
-        <div className="hover:cursor-pointer hover:bg-amber-200 ">
+      <div className="flex items-center justify-around font-semibold text-xl border-b border-amber-200 ">
+        <div className="hover:cursor-pointer hover:bg-amber-200 w-full text-center">For you</div>
+        <div className="hover:cursor-pointer hover:bg-amber-200 w-full text-center ">
           Following
         </div>
       </div>
