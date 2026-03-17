@@ -1,8 +1,12 @@
-
-import './App.css'
+import "./App.css";
+import Home from "./components/Home";
 
 function App() {
-  <div className='text-2xl bg-red-50'>LLLL</div>
+  return (
+    <div>
+      <Home />
+    </div>
+  );
 }
 
-export default App
+export default App;

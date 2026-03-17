@@ -1,6 +1,8 @@
 const RightSidebar = () => {
   return (
-    <div>RightSidebar</div>
+    <div className="flex justify-end">
+      <div>RightSidebar</div>
+    </div>
   );
 };
 
