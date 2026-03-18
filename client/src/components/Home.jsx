@@ -5,7 +5,7 @@ import RightSidebar from "./RightSidebar";
 const Home = () => {
   return (
     <div className="flex justify-around items-start h-screen ">
-      <div className="flex-2 ml-8">
+      <div className="flex-2 mx-8">
         <LeftSidebar />
       </div>
 
