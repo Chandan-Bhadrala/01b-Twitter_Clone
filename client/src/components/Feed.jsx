@@ -3,9 +3,9 @@ import Tweet from "./Tweet";
 
 const Feed = () => {
   return (
-    <div className="border border-amber-200 h-screen ">
+    <div className="h-screen border border-amber-200">
       <CreatePost />
-      <Tweet/>
+      <Tweet />
     </div>
   );
 };

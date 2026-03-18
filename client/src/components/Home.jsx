@@ -13,7 +13,7 @@ const Home = () => {
         <Feed />
       </div>
 
-      <div className="flex-2 mr-8">
+      <div className="flex-3 mr-8 ml-4 h-screen">
         <RightSidebar />
       </div>
     </div>
