@@ -1,16 +1,18 @@
 const CreatePost = () => {
   return (
-    <div className="py-4">
+    <div>
       {/* Top-section */}
-      <div className="flex items-center justify-around font-semibold text-xl border-b border-amber-200 ">
-        <div className="hover:cursor-pointer hover:bg-amber-200 w-full text-center">For you</div>
-        <div className="hover:cursor-pointer hover:bg-amber-200 w-full text-center ">
+      <div className="flex items-center justify-around font-semibold text-xl border-b border-amber-200">
+        <div className="hover:cursor-pointer hover:bg-amber-200 w-full text-center py-4 ">
+          For you
+        </div>
+        <div className="hover:cursor-pointer hover:bg-amber-200 w-full text-center py-4">
           Following
         </div>
       </div>
 
       {/* Post-section */}
-      <div className="flex  mt-4 items-start ml-4">
+      <div className="flex  p-4 items-start ">
         <div className="flex items-center space-x-3">
           <img
             src="https://i.pravatar.cc/150"
