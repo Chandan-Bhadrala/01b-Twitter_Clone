@@ -1,1 +1,40 @@
 @import "tailwindcss";
+
+/* Hide scrollbar but keep scroll working */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
+
+.scrollbar-mac::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-mac::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-mac::-webkit-scrollbar-thumb {
+  background-color: rgba(120, 120, 120, 0.25);
+  border-radius: 9999px;
+}
+
+/* Smooth hover effect */
+.scrollbar-mac:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(120, 120, 120, 0.5);
+}
+
+/* Optional: active (while dragging) */
+.scrollbar-mac::-webkit-scrollbar-thumb:active {
+  background-color: rgba(120, 120, 120, 0.7);
+}
+
+/* Firefox support */
+.scrollbar-mac {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 120, 120, 0.4) transparent;
+}

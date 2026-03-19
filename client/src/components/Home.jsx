@@ -5,17 +5,17 @@ import { Outlet } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="flex h-screen items-start justify-around">
-      <div className="mx-8 flex-2">
+    <div className="flex items-start justify-around">
+      <div className="sticky top-0 mr-8 ml-28 flex-2">
         <LeftSidebar />
       </div>
 
- {/* Rendering different children using Outlet. */}
-      <div className="flex-6">
+      {/* Rendering different children using Outlet. */}
+      <div className="flex-6 border border-gray-200">
         <Outlet />
       </div>
 
-      <div className="mr-8 ml-4 h-screen flex-3">
+      <div className="sticky top-0 max-h-screen mr-28 ml-4 flex-3 overflow-y-auto scrollbar-hide">
         <RightSidebar />
       </div>
     </div>

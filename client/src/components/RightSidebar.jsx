@@ -24,9 +24,163 @@ const RightSidebar = () => {
           <div className="flex w-full justify-between">
             <div>
               <h1 className="font-semibold">Chandan</h1>
-              <p>@ChandanBhadrala</p>
+              <p className="text-gray-600">@ChandanBhadrala</p>
             </div>
-            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white">
+            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+              Follow
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 rounded-2xl border border-amber-200 p-2">
+        <h1 className="mb-4 text-2xl font-bold">Who to follow</h1>
+
+        {/* Individual Profiles */}
+        <div className="mb-4 flex gap-2">
+          <img
+            src="https://i.pravatar.cc/150"
+            alt="avatar"
+            className="h-10 w-10 rounded-full"
+          />
+
+          <div className="flex w-full justify-between">
+            <div>
+              <h1 className="font-semibold">Chandan</h1>
+              <p className="text-gray-600">@ChandanBhadrala</p>
+            </div>
+            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+              Follow
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 rounded-2xl border border-amber-200 p-2">
+        <h1 className="mb-4 text-2xl font-bold">Who to follow</h1>
+
+        {/* Individual Profiles */}
+        <div className="mb-4 flex gap-2">
+          <img
+            src="https://i.pravatar.cc/150"
+            alt="avatar"
+            className="h-10 w-10 rounded-full"
+          />
+
+          <div className="flex w-full justify-between">
+            <div>
+              <h1 className="font-semibold">Chandan</h1>
+              <p className="text-gray-600">@ChandanBhadrala</p>
+            </div>
+            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+              Follow
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 rounded-2xl border border-amber-200 p-2">
+        <h1 className="mb-4 text-2xl font-bold">Who to follow</h1>
+
+        {/* Individual Profiles */}
+        <div className="mb-4 flex gap-2">
+          <img
+            src="https://i.pravatar.cc/150"
+            alt="avatar"
+            className="h-10 w-10 rounded-full"
+          />
+
+          <div className="flex w-full justify-between">
+            <div>
+              <h1 className="font-semibold">Chandan</h1>
+              <p className="text-gray-600">@ChandanBhadrala</p>
+            </div>
+            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+              Follow
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 rounded-2xl border border-amber-200 p-2">
+        <h1 className="mb-4 text-2xl font-bold">Who to follow</h1>
+
+        {/* Individual Profiles */}
+        <div className="mb-4 flex gap-2">
+          <img
+            src="https://i.pravatar.cc/150"
+            alt="avatar"
+            className="h-10 w-10 rounded-full"
+          />
+
+          <div className="flex w-full justify-between">
+            <div>
+              <h1 className="font-semibold">Chandan</h1>
+              <p className="text-gray-600">@ChandanBhadrala</p>
+            </div>
+            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+              Follow
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 rounded-2xl border border-amber-200 p-2">
+        <h1 className="mb-4 text-2xl font-bold">Who to follow</h1>
+
+        {/* Individual Profiles */}
+        <div className="mb-4 flex gap-2">
+          <img
+            src="https://i.pravatar.cc/150"
+            alt="avatar"
+            className="h-10 w-10 rounded-full"
+          />
+
+          <div className="flex w-full justify-between">
+            <div>
+              <h1 className="font-semibold">Chandan</h1>
+              <p className="text-gray-600">@ChandanBhadrala</p>
+            </div>
+            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+              Follow
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 rounded-2xl border border-amber-200 p-2">
+        <h1 className="mb-4 text-2xl font-bold">Who to follow</h1>
+
+        {/* Individual Profiles */}
+        <div className="mb-4 flex gap-2">
+          <img
+            src="https://i.pravatar.cc/150"
+            alt="avatar"
+            className="h-10 w-10 rounded-full"
+          />
+
+          <div className="flex w-full justify-between">
+            <div>
+              <h1 className="font-semibold">Chandan</h1>
+              <p className="text-gray-600">@ChandanBhadrala</p>
+            </div>
+            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+              Follow
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 rounded-2xl border border-amber-200 p-2">
+        <h1 className="mb-4 text-2xl font-bold">Who to follow</h1>
+
+        {/* Individual Profiles */}
+        <div className="mb-4 flex gap-2">
+          <img
+            src="https://i.pravatar.cc/150"
+            alt="avatar"
+            className="h-10 w-10 rounded-full"
+          />
+
+          <div className="flex w-full justify-between">
+            <div>
+              <h1 className="font-semibold">Chandan</h1>
+              <p className="text-gray-600">@ChandanBhadrala</p>
+            </div>
+            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
               Follow
             </button>
           </div>

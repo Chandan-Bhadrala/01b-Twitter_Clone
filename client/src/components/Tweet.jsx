@@ -7,7 +7,7 @@ import { IoStatsChartOutline } from "react-icons/io5";
 
 const Tweet = () => {
   return (
-    <div className="p-4 flex gap-4 border-b border-amber-200">
+    <div className="p-4 flex gap-4 border-b border-gray-200">
       <img
         src="https://i.pravatar.cc/150"
         alt="avatar"
@@ -28,31 +28,31 @@ const Tweet = () => {
         {/* Bottom Action Images */}
         <div className="flex justify-between pt-4 items-center">
           <div className="flex flex-8 justify-around">
-            <div className="flex gap-1 items-center cursor-pointer hover:bg-amber-200 rounded-4xl p-2">
+            <div className="flex gap-1 items-center cursor-pointer hover:bg-gray-200 rounded-4xl p-2">
               <IoChatbubbleOutline size="20" />
               <span>248</span>
             </div>
-            <div className="flex gap-1 items-center cursor-pointer hover:bg-amber-200 rounded-4xl p-2">
+            <div className="flex gap-1 items-center cursor-pointer hover:bg-gray-200 rounded-4xl p-2">
               <AiOutlineRetweet size="20" />
               <span>248</span>
             </div>
 
-            <div className="flex gap-1 items-center cursor-pointer hover:bg-amber-200 rounded-4xl p-2">
+            <div className="flex gap-1 items-center cursor-pointer hover:bg-gray-200 rounded-4xl p-2">
               <FaRegHeart size="20" />
               <span>250</span>
             </div>
 
-            <div className="flex gap-1 items-center cursor-pointer hover:bg-amber-200 rounded-4xl p-2">
+            <div className="flex gap-1 items-center cursor-pointer hover:bg-gray-200 rounded-4xl p-2">
               <IoStatsChartOutline size="20" />
               <span>72</span>
             </div>
           </div>
 
           <div className="flex justify-around flex-1">
-            <div className="cursor-pointer hover:bg-amber-200 rounded-4xl p-2">
+            <div className="cursor-pointer hover:bg-gray-200 rounded-4xl p-2">
               <CiBookmark size="20" />
             </div>
-            <div className="cursor-pointer hover:bg-amber-200 rounded-4xl p-2">
+            <div className="cursor-pointer hover:bg-gray-200 rounded-4xl p-2">
               <MdOutlineFileUpload size="20" />
             </div>
           </div>

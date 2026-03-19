@@ -5,14 +5,14 @@ import { IoFlagOutline } from "react-icons/io5";
 
 const CreatePost = () => {
   return (
-    <div className="border-b border-amber-200 pb-4">
+    <div className="border-b border-gray-200 pb-4">
       {/* Top-section */}
-      <div className="flex items-center justify-around border-b border-amber-200 text-xl font-semibold">
-        <div className="w-full py-4 text-center hover:cursor-pointer hover:bg-amber-200">
+      <div className="flex items-center justify-around border-b border-gray-200 text-xl font-semibold">
+        <div className="w-full py-4 text-center hover:cursor-pointer hover:bg-gray-200">
           For you
         </div>
 
-        <div className="w-full py-4 text-center hover:cursor-pointer hover:bg-amber-200">
+        <div className="w-full py-4 text-center hover:cursor-pointer hover:bg-gray-200">
           Following
         </div>
       </div>
@@ -27,7 +27,7 @@ const CreatePost = () => {
 
         <textarea
           placeholder="What's happening?"
-          className="ml-4 h-30 w-full flex-1 resize-none border-b border-amber-200 text-xl outline-none"
+          className="ml-4 h-30 w-full flex-1 resize-none border-b border-gray-200 text-xl outline-none"
         />
       </div>
 
