@@ -49,7 +49,9 @@ const LeftSidebar = () => {
         </div>
         <div className="flex items-center rounded-4xl p-4 font-semibold hover:cursor-pointer hover:bg-gray-200">
           <IoLogOutOutline size="32px" />
-          <h1 className="ml-2 text-xl">Logout</h1>
+          <Link to="/login" className="ml-2 text-xl">
+            Logout
+          </Link>
         </div>
       </div>
 
