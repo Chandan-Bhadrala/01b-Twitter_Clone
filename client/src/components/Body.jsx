@@ -1,12 +1,27 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
+import Profile from "./Profile";
+import Feed from "./Feed";
 
 // Body is being called from the App.jsx.
 const Body = () => {
   // Individual objects of the array, represents individual paths and components to display.
   const appRouter = createBrowserRouter([
-    { path: "/home", element: <Home /> },
+    {
+      path: "/",
+      element: <Home />,
+      children: [
+        {
+          path: "/",
+          element: <Feed />,
+        },
+        {
+          path: "/profile",
+          element: <Profile />,
+        },
+      ],
+    },
     { path: "/login", element: <Login /> },
   ]);
 
@@ -19,4 +34,3 @@ const Body = () => {
 };
 
 export default Body;
-
