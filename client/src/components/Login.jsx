@@ -1,3 +1,4 @@
+import GoogleLogin from "./GoogleLogin";
 import { FaXTwitter } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 
@@ -16,10 +17,8 @@ const Login = () => {
 
         {/* Signin Button */}
         <div className="mt-8 flex w-fit cursor-pointer items-center gap-12 rounded-4xl bg-black px-8 py-4 text-xl text-white">
-          <button>Sign in with Google </button>
-          <span>
-            <FcGoogle size="32" />
-          </span>
+          <GoogleLogin className="bg-black text-white" />
+          <FcGoogle size="28"/>
         </div>
       </div>
     </div>
