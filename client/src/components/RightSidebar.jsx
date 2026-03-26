@@ -26,7 +26,7 @@ const RightSidebar = () => {
               <h1 className="font-semibold">Chandan</h1>
               <p className="text-gray-600">@ChandanBhadrala</p>
             </div>
-            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+            <button className="mr-2 cursor-pointer rounded-4xl bg-black px-4 text-lg font-semibold text-white">
               Follow
             </button>
           </div>
@@ -48,7 +48,7 @@ const RightSidebar = () => {
               <h1 className="font-semibold">Chandan</h1>
               <p className="text-gray-600">@ChandanBhadrala</p>
             </div>
-            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+            <button className="mr-2 cursor-pointer rounded-4xl bg-black px-4 text-lg font-semibold text-white">
               Follow
             </button>
           </div>
@@ -70,7 +70,7 @@ const RightSidebar = () => {
               <h1 className="font-semibold">Chandan</h1>
               <p className="text-gray-600">@ChandanBhadrala</p>
             </div>
-            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+            <button className="mr-2 cursor-pointer rounded-4xl bg-black px-4 text-lg font-semibold text-white">
               Follow
             </button>
           </div>
@@ -92,7 +92,7 @@ const RightSidebar = () => {
               <h1 className="font-semibold">Chandan</h1>
               <p className="text-gray-600">@ChandanBhadrala</p>
             </div>
-            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+            <button className="mr-2 cursor-pointer rounded-4xl bg-black px-4 text-lg font-semibold text-white">
               Follow
             </button>
           </div>
@@ -114,7 +114,7 @@ const RightSidebar = () => {
               <h1 className="font-semibold">Chandan</h1>
               <p className="text-gray-600">@ChandanBhadrala</p>
             </div>
-            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+            <button className="mr-2 cursor-pointer rounded-4xl bg-black px-4 text-lg font-semibold text-white">
               Follow
             </button>
           </div>
@@ -136,7 +136,7 @@ const RightSidebar = () => {
               <h1 className="font-semibold">Chandan</h1>
               <p className="text-gray-600">@ChandanBhadrala</p>
             </div>
-            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+            <button className="mr-2 cursor-pointer rounded-4xl bg-black px-4 text-lg font-semibold text-white">
               Follow
             </button>
           </div>
@@ -158,7 +158,7 @@ const RightSidebar = () => {
               <h1 className="font-semibold">Chandan</h1>
               <p className="text-gray-600">@ChandanBhadrala</p>
             </div>
-            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+            <button className="mr-2 cursor-pointer rounded-4xl bg-black px-4 text-lg font-semibold text-white">
               Follow
             </button>
           </div>
@@ -180,7 +180,7 @@ const RightSidebar = () => {
               <h1 className="font-semibold">Chandan</h1>
               <p className="text-gray-600">@ChandanBhadrala</p>
             </div>
-            <button className="mr-2 rounded-4xl bg-black px-4 text-lg font-semibold text-white cursor-pointer">
+            <button className="mr-2 cursor-pointer rounded-4xl bg-black px-4 text-lg font-semibold text-white">
               Follow
             </button>
           </div>
