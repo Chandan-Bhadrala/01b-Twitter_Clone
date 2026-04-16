@@ -14,20 +14,24 @@ const UserSchema = new mongoose.Schema(
     image: {
       type: String,
     },
-    bookmarks: {
-      type: {
+    bookmarks: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Tweet",
       },
-    },
-    followers: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-    following: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
+    ],
+    followers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    following: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     // Automatically adds createdAt and updatedAt fields
@@ -39,7 +43,7 @@ const UserSchema = new mongoose.Schema(
 // We've called a mongoose.model function with two arguments.
 // One is the name of the collection "users" and other is the schema that goes into that collection.
 // And we receive back a model, which we store in the User variable.
-export const User = mongoose.model("users", UserSchema);
+export const User = mongoose.model("User", UserSchema);
 
 /**
 A version for the NextJS.

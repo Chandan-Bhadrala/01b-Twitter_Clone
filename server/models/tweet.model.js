@@ -6,12 +6,12 @@ const TweetSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    like: {
+    like: [{
       type: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
-    },
+    }],
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -27,7 +27,7 @@ const TweetSchema = new mongoose.Schema(
 // We've called a mongoose.model function with two arguments.
 // One is the name of the collection "users" and other is the schema that goes into that collection.
 // And we receive back a model, which we store in the User variable.
-export const Tweet = mongoose.model("tweets", TweetSchema);
+export const Tweet = mongoose.model("Tweet", TweetSchema);
 
 /**
 A version for the NextJS.

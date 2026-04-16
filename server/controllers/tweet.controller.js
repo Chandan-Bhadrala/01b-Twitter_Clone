@@ -40,105 +40,38 @@ export const deleteTweet = async (req, res) => {
 };
 
 export const likeOrDislike = async (req, res) => {
-    const tweetId = req.params.id;
-    const userId = req.user.id;
+  const tweetId = req.params.id;
+  const userId = req.user.id;
 
-    const tweet = await Tweet.findByIdAndUpdate({tweetId},$pull)
-};
-
-// # Simple toggling Controller
-/**
-import Tweet from "../models/Tweet.js";
-
-export const likeOrDislike = async (req, res) => {
   try {
-    const tweetId = req.params.id;
-    const userId = req.user.id; // assuming auth middleware sets this
-
-    const tweet = await Tweet.findById(tweetId);
-
-    if (!tweet) {
-      return res.status(404).json({
-        success: false,
-        message: "Tweet not found",
-      });
-    }
-
-    const isLiked = tweet.like.includes(userId);
-
-    if (isLiked) {
-      // Dislike (remove userId)
-      await tweet.updateOne({
-        $pull: { like: userId },
-      });
-
-      return res.status(200).json({
-        success: true,
-        message: "Tweet disliked",
-      });
-    } else {
-      // Like (add userId)
-      await tweet.updateOne({
-        $push: { like: userId },
-      });
-
-      return res.status(200).json({
-        success: true,
-        message: "Tweet liked",
-      });
-    }
-
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  }
-}; 
-*/
-
-// # Atomic toggling Controller
-/**
-import Tweet from "../models/Tweet.js";
-
-export const likeOrDislike = async (req, res) => {
-  try {
-    const tweetId = req.params.id;
-    const userId = req.user.id;
-
-    // Try removing first (dislike case)
     const removed = await Tweet.findOneAndUpdate(
-      { _id: tweetId, like: userId },
-      { $pull: { like: userId } },
-      { new: true }
+      { _id: tweetId, like: userId }, // Find tweet based on this condition.
+      { $pull: { like: userId } }, // If found pull it out.
+      { new: true }, // return the whole tweet document (Huge Payload).
     );
 
+    // If removed
     if (removed) {
-      return res.status(200).json({
-        success: true,
-        message: "Tweet disliked",
-      });
+      return res
+        .status(200)
+        .json({ success: true, message: "Tweet un-liked." });
     }
 
-    // If not removed, then add (like case)
-    const added = await Tweet.findOneAndUpdate(
-      { _id: tweetId },
-      { $addToSet: { like: userId } }, // prevents duplicates
-      { new: true }
+    // If not removed. Then like it.
+    const addLike = await Tweet.findByIdAndUpdate(
+       tweetId ,
+      { $push: { like: userId } },
     );
 
-    if (!added) {
-      return res.status(404).json({
-        success: false,
-        message: "Tweet not found",
-      });
+    // If tweet was never found.
+    if (!addLike) {
+      return res
+        .status(404)
+        .json({ message: "Tweet not found", success: false });
     }
 
-    return res.status(200).json({
-      success: true,
-      message: "Tweet liked",
-    });
-
+    // If all went nice.
+    return res.status(201).json({ message: "Tweet Liked", success: true });
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -146,4 +79,3 @@ export const likeOrDislike = async (req, res) => {
     });
   }
 };
- */
