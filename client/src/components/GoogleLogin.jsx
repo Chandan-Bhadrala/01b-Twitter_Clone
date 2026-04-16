@@ -1,16 +1,15 @@
 import { useGoogleLogin } from "@react-oauth/google";
-import { googleAuth } from "./api";
+import { googleAuth } from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
 const GoogleLogin = ({ className = "", children = "Sign in with Google" }) => {
   const navigate = useNavigate();
- 
+
   const responseGoogle = async (authResult) => {
     // Above authResult is populated by the useGoogleLogin hook.
     try {
       // console.log(authResult);
       if (authResult["code"]) {
-       
         const result = await googleAuth(authResult["code"]);
 
         const { email, name, image } = result.data.user;
@@ -29,7 +28,6 @@ const GoogleLogin = ({ className = "", children = "Sign in with Google" }) => {
     }
   };
 
-
   const googleLogin = useGoogleLogin({
     onSuccess: responseGoogle,
     onError: responseGoogle,
@@ -38,7 +36,6 @@ const GoogleLogin = ({ className = "", children = "Sign in with Google" }) => {
 
   return (
     <div>
-  
       <button onClick={googleLogin} className={`cursor-pointer ${className}`}>
         {children}
       </button>

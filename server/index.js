@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
-import authRouter from "./routes/authRouter.js";
+import authRouter from "./routes/auth.route.js";
+import tweetRouter from "./routes/tweet.route.js";
+import userRouter from "./routes/user.route.js";
 import connectDB from "./db/dbConnect.js";
 import cors from "cors";
 
@@ -9,6 +11,7 @@ dotenv.config({ path: "./.env" });
 const PORT = process.env.PORT;
 
 const app = express();
+
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -19,6 +22,8 @@ app.use(
 );
 
 app.use("/auth", authRouter);
+app.use("/tweet", tweetRouter);
+app.use("/user",userRouter);
 
 // First BE should connect to the DB and then only start the server for the world to access.
 connectDB()

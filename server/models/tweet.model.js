@@ -1,30 +1,18 @@
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema(
+const TweetSchema = new mongoose.Schema(
   {
-    name: {
+    description: {
       type: String,
       required: true,
     },
-    email: {
-      type: String,
-      unique: true,
-      required: true,
-    },
-    image: {
-      type: String,
-    },
-    bookmarks: {
+    like: {
       type: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Tweet",
+        ref: "User",
       },
     },
-    followers: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-    following: {
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
@@ -39,7 +27,7 @@ const UserSchema = new mongoose.Schema(
 // We've called a mongoose.model function with two arguments.
 // One is the name of the collection "users" and other is the schema that goes into that collection.
 // And we receive back a model, which we store in the User variable.
-export const User = mongoose.model("users", UserSchema);
+export const Tweet = mongoose.model("tweets", TweetSchema);
 
 /**
 A version for the NextJS.
