@@ -39,3 +39,52 @@ export const bookmarks = async (req, res) => {
     });
   }
 };
+
+export const getMyProfile = async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const user = await User.findById(userId).select("-password");
+    return res.status(200).json({
+      user,
+      message: "User details fetched successfully",
+      status: true,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Failed to fetch user details.");
+  }
+};
+
+export const getOtherUsers = async (req, res) => {
+  const userId = req.body.id;
+  try {
+    const otherUsers = await User.find({ _id: { $ne: userId } }).select(
+      "-password",
+    );
+
+    if (!otherUsers) {
+      return res
+        .status(200)
+        .json({ message: "No other users in the DB", status: true });
+    }
+    return res.status(200).json({
+      otherUsers,
+      message: "Other users details fetched successfully",
+      status: true,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Failed to fetch other users details.");
+  }
+};
+
+export const follow = async(req,res)=>{
+  const userId = req.body.id;
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({message:"Failed to add follow"})
+  }
+}
