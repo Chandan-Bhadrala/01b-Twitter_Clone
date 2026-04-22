@@ -58,7 +58,7 @@ export const getMyProfile = async (req, res) => {
 };
 
 export const getOtherUsers = async (req, res) => {
-  const userId = req.body.id;
+  const userId = req.user.id;
   try {
     const otherUsers = await User.find({ _id: { $ne: userId } }).select(
       "-password",
@@ -82,7 +82,7 @@ export const getOtherUsers = async (req, res) => {
 
 // Follow/unFollow user.
 export const follow = async (req, res) => {
-  const userId = req.body.id;
+  const userId = req.user.id;
   const followingUserId = req.params.id;
 
   if (userId === followingUserId) {

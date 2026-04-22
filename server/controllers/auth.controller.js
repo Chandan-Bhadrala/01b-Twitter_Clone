@@ -3,7 +3,6 @@ import { oauth2client } from "../utils/googleConfig.js";
 import axios from "axios";
 import jwt from "jsonwebtoken";
 
-
 export const googleLogin = async (req, res) => {
   try {
     const { code } = req.query;
@@ -26,7 +25,7 @@ export const googleLogin = async (req, res) => {
     // Object name = oauth2client.
     // This way, oauth2client now is an authenticated object after setting its setCredentials property.
     // Now, this object (oauth2client) can later be used to interact w/ the google further.
-    
+
     // Correction: setCredentials is a method (a function), not just a property. You are calling that function to "load" the tokens into the object. Your code is currently correct, but your comment was slightly off!
     oauth2client.setCredentials(googleRes.tokens);
     // console.log(googleRes.tokens);
@@ -52,6 +51,13 @@ export const googleLogin = async (req, res) => {
 
     const token = jwt.sign({ _id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_TIMEOUT,
+    });
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+      maxAge: 15 * 60 * 1000, // 15 minutes
     });
 
     return res.status(200).json({ message: "success", token, user });

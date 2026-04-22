@@ -5,6 +5,7 @@ import tweetRouter from "./routes/tweet.route.js";
 import userRouter from "./routes/user.route.js";
 import connectDB from "./db/dbConnect.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 // Load environment variables from .env file
 dotenv.config({ path: "./.env" });
@@ -12,6 +13,7 @@ const PORT = process.env.PORT;
 
 const app = express();
 
+app.use(cookieParser())
 app.use(
   cors({
     origin: "http://localhost:5173",
