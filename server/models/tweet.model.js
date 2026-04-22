@@ -6,12 +6,12 @@ const TweetSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    like: [{
-      type: {
+    like: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
-    }],
+    ],
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -22,6 +22,14 @@ const TweetSchema = new mongoose.Schema(
     timestamps: true,
   },
 );
+
+// ✅ Indexing based on the tweet creation time.
+/**
+With index:
+It directly jumps to relevant users' tweets
+Already sorted → faster
+*/
+TweetSchema.index({ userId: 1, createdAt: -1 });
 
 // To create a model to interact w/ the mongoose.
 // We've called a mongoose.model function with two arguments.

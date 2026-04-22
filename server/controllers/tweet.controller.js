@@ -1,4 +1,5 @@
 import { Tweet } from "../models/tweet.model.js";
+import { User } from "../models/user.model.js";
 
 export const createTweet = async (req, res) => {
   try {
@@ -58,10 +59,9 @@ export const likeOrDislike = async (req, res) => {
     }
 
     // If not removed. Then like it.
-    const addLike = await Tweet.findByIdAndUpdate(
-       tweetId ,
-      { $push: { like: userId } },
-    );
+    const addLike = await Tweet.findByIdAndUpdate(tweetId, {
+      $push: { like: userId },
+    });
 
     // If tweet was never found.
     if (!addLike) {
@@ -77,5 +77,82 @@ export const likeOrDislike = async (req, res) => {
       success: false,
       message: error.message,
     });
+  }
+};
+
+// Get user + Following user tweets.
+export const allTweets = async (req, res) => {
+  const userId = req.user.id;
+  const page = Math.max(1, parseInt(req.query.page) || 1); // Math. max o avoid checking for negative pages query.
+  const limit = 10;
+
+  try {
+    const user = await User.findById(userId); // Fetching user detail to fetch following-user ids.
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+        success: false,
+      });
+    }
+
+    // $in operator -> find tweets based on userId to be -> mine, person1, person2 or person3 and so on...
+    const tweets = await Tweet.find({
+      userId: { $in: [userId, ...(user.following || [])] }, // [] -> Safety provision if user has no following.
+    })
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit) // For page = 3. Skip 2*limit = 20 (Skip first 20 tweets).
+      .limit(limit);
+
+    return res
+      .status(200)
+      .json({ message: "Tweets fetched", success: true, tweets });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "Failed to get all tweets", success: false });
+  }
+};
+
+// Get only Following user tweets.
+export const followingTweets = async (req, res) => {
+  const userId = req.user.id;
+  const page = Math.max(1, parseInt(req.query.page) || 1); // Math. max o avoid checking for negative pages query.
+
+  const limit = 10;
+
+  try {
+    const user = await User.findById(userId); // Fetching user detail to fetch following-user ids.
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+        success: false,
+      });
+    }
+
+    if (!user.following || user.following.length === 0) {
+      return res.status(200).json({
+        message: "No following users",
+        success: true,
+        tweets: [],
+      });
+    }
+
+    // $in operator -> find tweets based on following userIds-> person1, person2 or person3 and so on...
+    const tweets = await Tweet.find({
+      userId: { $in: user.following },
+    })
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * limit) // For page = 3. Skip 2*limit = 20 (Skip first 20 tweets).
+      .limit(limit);
+
+    return res
+      .status(200)
+      .json({ message: "Tweets fetched", success: true, tweets });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "Failed to get all tweets", success: false });
   }
 };

@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { User } from "../models/user.model.js";
 
 export const bookmarks = async (req, res) => {
@@ -79,12 +80,89 @@ export const getOtherUsers = async (req, res) => {
   }
 };
 
-export const follow = async(req,res)=>{
+// Follow/unFollow user.
+export const follow = async (req, res) => {
   const userId = req.body.id;
-  try {
-    
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({message:"Failed to add follow"})
+  const followingUserId = req.params.id;
+
+  if (userId === followingUserId) {
+    return res.status(400).json({ message: "Cannot follow yourself" });
   }
-}
+
+  // ✅ Using session to maintain DB consistency.
+  const session = await mongoose.startSession();
+
+  session.startTransaction();
+  try {
+    const isFollowing = await User.findOne(
+      {
+        _id: userId,
+        following: followingUserId,
+      },
+      null,
+      { session }, // ✅ attach session
+    );
+
+    if (isFollowing) {
+      // Write 1.
+      const res1 = await User.updateOne(
+        { _id: userId },
+        { $pull: { following: followingUserId } },
+        { session }, // ✅
+      );
+
+      // Write 2.
+      const res2 = await User.updateOne(
+        { _id: followingUserId },
+        { $pull: { followers: userId } },
+        { session }, // ✅
+      );
+
+      // ✅ Validate BEFORE commit
+      if (res1.matchedCount === 0 || res2.matchedCount === 0) {
+        throw new Error("User not found");
+      }
+
+      await session.commitTransaction();
+      session.endSession(); // ✅ required to close to avoid memory leak.
+
+      return res
+        .status(200)
+        .json({ message: "User un-followed successfully.", success: true });
+    } else {
+      // Not already following.
+
+      // Write 1.
+      const res1 = await User.updateOne(
+        { _id: userId },
+        { $addToSet: { following: followingUserId } },
+        { session }, // ✅
+      );
+
+      // Write 2.
+      const res2 = await User.updateOne(
+        { _id: followingUserId },
+        { $addToSet: { followers: userId } },
+        { session }, // ✅
+      );
+
+      // ✅ Validate BEFORE commit
+      if (res1.matchedCount === 0 || res2.matchedCount === 0) {
+        throw new Error("User not found");
+      }
+
+      await session.commitTransaction();
+      session.endSession(); // ✅ required to close to avoid memory leak.
+
+      return res
+        .status(200)
+        .json({ message: "User followed successfully.", success: true });
+    }
+  } catch (error) {
+    await session.abortTransaction();
+    session.endSession(); // ✅ required
+    return res
+      .status(500)
+      .json({ message: "Follow operation failed.", success: false });
+  }
+};
