@@ -13,7 +13,7 @@ const router = Router();
 router.post("/", isAuthenticated,createTweet);
 router.delete("/:id", isAuthenticated, deleteTweet);
 router.put("/:id", isAuthenticated, likeOrDislike);
-router.get("/tweets/", isAuthenticated, allTweets); // Fetch page from the query and not from the params.
+router.get("/", isAuthenticated, allTweets); // Fetch page from the query and not from the params.
 router.get("/followingTweets/", isAuthenticated, followingTweets); // Fetch page from the query and not from the params.
 
 export default router;

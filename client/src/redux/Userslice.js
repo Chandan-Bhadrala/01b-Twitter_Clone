@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getOtherUsers } from "../../../server/controllers/user.controller";
+
 
 const userSlice = createSlice({
   name: "user",

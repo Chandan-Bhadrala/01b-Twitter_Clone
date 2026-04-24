@@ -8,3 +8,4 @@ const api = axios.create({
 // BE will verify the above code w/ the Google and only after successful verification with the Google.
 // BE will share/grant an access_token to the FE for app-access.
 export const googleAuth = (code) => api.get(`/auth/google?code=${code}`);
+

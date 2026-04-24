@@ -7,8 +7,8 @@ const router = Router();
 
 
  router.put("/bookmark/:id", isAuthenticated,bookmarks);
- router.get("/profile/:id", isAuthenticated,getMyProfile);
- router.get("/profile", isAuthenticated,getOtherUsers);
+ router.get("/:id", isAuthenticated,getMyProfile);
+ router.get("/", isAuthenticated,getOtherUsers);
  router.put("/follow", isAuthenticated,follow);
 
 export default router;

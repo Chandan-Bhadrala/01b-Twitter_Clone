@@ -1,10 +1,12 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import { googleAuth } from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getUser } from "../redux/userSlice";
 
 const GoogleLogin = ({ className = "", children = "Sign in with Google" }) => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const responseGoogle = async (authResult) => {
     // Above authResult is populated by the useGoogleLogin hook.
     try {
@@ -20,6 +22,7 @@ const GoogleLogin = ({ className = "", children = "Sign in with Google" }) => {
 
         // Consolidating the received user data for storage in the FE cookies.
         const obj = { email, name, image, token };
+        dispatch(getUser(obj));
         localStorage.setItem("user-info", JSON.stringify(obj));
         if (obj) navigate("/");
       }

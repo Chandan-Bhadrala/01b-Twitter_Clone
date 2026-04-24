@@ -2,8 +2,10 @@ import { CiImageOn } from "react-icons/ci";
 import { MdOutlineGifBox } from "react-icons/md";
 import { VscSmiley } from "react-icons/vsc";
 import { IoFlagOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 const CreatePost = () => {
+  const { image } = useSelector((store) => store.user.user);
   return (
     <div className="border-b border-gray-200 pb-4">
       {/* Top-section */}
@@ -19,11 +21,7 @@ const CreatePost = () => {
 
       {/* Post-section */}
       <div className="flex items-start p-4">
-        <img
-          src="https://i.pravatar.cc/150"
-          alt="avatar"
-          className="h-10 w-10 rounded-full"
-        />
+        <img src={image} alt="avatar" className="h-10 w-10 rounded-full" />
 
         <textarea
           placeholder="What's happening?"
