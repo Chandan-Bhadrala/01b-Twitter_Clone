@@ -83,7 +83,7 @@ export const likeOrDislike = async (req, res) => {
 // Get user + Following user tweets.
 export const allTweets = async (req, res) => {
   const userId = req.user.id;
-  const page = Math.max(1, parseInt(req.query.page) || 1); // Math. max o avoid checking for negative pages query.
+  const page = Math.max(1, parseInt(req.query.page) || 1); // Math. max to avoid checking for negative page query.
   const limit = 10;
 
   try {
@@ -117,7 +117,7 @@ export const allTweets = async (req, res) => {
 // Get only Following user tweets.
 export const followingTweets = async (req, res) => {
   const userId = req.user.id;
-  const page = Math.max(1, parseInt(req.query.page) || 1); // Math. max o avoid checking for negative pages query.
+  const page = Math.max(1, parseInt(req.query.page) || 1); // Math. max to avoid checking for negative page query.
 
   const limit = 10;
 

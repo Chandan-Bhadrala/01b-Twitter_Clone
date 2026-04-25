@@ -2,9 +2,9 @@ import axios from "axios";
 import { USER_API_END_POINT } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getUser } from "../redux/userSlice";
+import { setUser } from "../redux/userSlice";
 
-
+// In the below hook simply call axios inside the useEffect and dispatch the received data into the redux store.
 export const useGetProfile = (id) => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -14,7 +14,7 @@ export const useGetProfile = (id) => {
           withCredentials: true, // To send the cookies via. axios call.
         });
         console.log(userData);
-        dispatch(getUser(userData?.data.user));
+        dispatch(setUser(userData?.data.user));
       } catch (error) {
         console.log(error);
       }

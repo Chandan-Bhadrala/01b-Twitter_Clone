@@ -2,24 +2,27 @@ import { CiImageOn } from "react-icons/ci";
 import { MdOutlineGifBox } from "react-icons/md";
 import { VscSmiley } from "react-icons/vsc";
 import { IoFlagOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { TWEET_API_END_POINT } from "../utils/constants";
 import axios from "axios";
+import { addTweet } from "../redux/tweetSlice";
 
 const CreatePost = () => {
   const { image } = useSelector((store) => store.user.user);
   const [tweet, setTweet] = useState("");
+  const dispatch = useDispatch();
 
   const handlePost = async () => {
     try {
       const res = await axios.post(
         `${TWEET_API_END_POINT}`,
-        { description:tweet },
+        { description: tweet },
         { withCredentials: true },
       );
-      setTweet("")
+      setTweet("");
       console.log(res);
+      dispatch(addTweet(tweet));
     } catch (error) {
       console.log(error);
     }
