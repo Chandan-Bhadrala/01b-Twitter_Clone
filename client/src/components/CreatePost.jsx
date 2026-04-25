@@ -21,7 +21,11 @@ const CreatePost = () => {
 
       {/* Post-section */}
       <div className="flex items-start p-4">
-        <img src={image} alt="avatar" className="h-10 w-10 rounded-full" />
+        <img
+          src={image || "https://i.pravatar.cc/150"}
+          alt="avatar"
+          className="h-10 w-10 rounded-full"
+        />
 
         <textarea
           placeholder="What's happening?"

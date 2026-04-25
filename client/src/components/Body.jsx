@@ -3,6 +3,8 @@ import Home from "./Home";
 import Login from "./Login";
 import Profile from "./Profile";
 import Feed from "./Feed";
+import ProtectedRoute from "./ProtectedRoute";
+import PublicRoute from "./PublicRoute";
 
 // Body is being called from the App.jsx.
 const Body = () => {
@@ -10,7 +12,11 @@ const Body = () => {
   const appRouter = createBrowserRouter([
     {
       path: "/",
-      element: <Home />,
+      element: (
+        <ProtectedRoute>
+          <Home />
+        </ProtectedRoute>
+      ),
       children: [
         {
           path: "/",
@@ -22,7 +28,14 @@ const Body = () => {
         },
       ],
     },
-    { path: "/login", element: <Login /> },
+    {
+      path: "/login",
+      element: (
+        <PublicRoute>
+          <Login />
+        </PublicRoute>
+      ),
+    },
   ]);
 
   // return the router, so that it can display the content as per the path
