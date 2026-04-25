@@ -12,7 +12,7 @@ dotenv.config({ path: "./.env" });
 const PORT = process.env.PORT;
 
 const app = express();
-
+app.use(express.json()); // To parse incoming json.
 app.use(cookieParser())
 app.use(
   cors({

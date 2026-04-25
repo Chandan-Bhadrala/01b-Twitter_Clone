@@ -10,7 +10,7 @@ import { isAuthenticated } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
-router.post("/", isAuthenticated,createTweet);
+router.post("/", isAuthenticated, createTweet);
 router.delete("/:id", isAuthenticated, deleteTweet);
 router.put("/:id", isAuthenticated, likeOrDislike);
 router.get("/", isAuthenticated, allTweets); // Fetch page from the query and not from the params.
