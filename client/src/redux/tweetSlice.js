@@ -15,6 +15,7 @@ const tweetSlice = createSlice({
       state.followingTweet = action.payload;
     },
     addTweet: (state, action) => {
+      if (!action.payload) return; // ✅ prevent null
       state.allTweets.unshift(action.payload);
     },
   },

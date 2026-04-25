@@ -3,7 +3,7 @@ import { User } from "../models/user.model.js";
 
 export const bookmarks = async (req, res) => {
   const tweetId = req.params.id;
-  const userId = req.user.id;
+  const userId = req.user;
 
   try {
     const removed = await User.findOneAndUpdate(
@@ -42,7 +42,7 @@ export const bookmarks = async (req, res) => {
 };
 
 export const getMyProfile = async (req, res) => {
-  const userId = req.params.id;
+  const userId = req.user;
 
   try {
     const user = await User.findById(userId).select("-password");
@@ -58,7 +58,7 @@ export const getMyProfile = async (req, res) => {
 };
 
 export const getOtherUsers = async (req, res) => {
-  const userId = req.user.id;
+  const userId = req.user;
   try {
     const otherUsers = await User.find({ _id: { $ne: userId } }).select(
       "-password",
@@ -82,7 +82,7 @@ export const getOtherUsers = async (req, res) => {
 
 // Follow/unFollow user.
 export const follow = async (req, res) => {
-  const userId = req.user.id;
+  const userId = req.user;
   const followingUserId = req.params.id;
 
   if (userId === followingUserId) {

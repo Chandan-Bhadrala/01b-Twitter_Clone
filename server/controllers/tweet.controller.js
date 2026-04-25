@@ -3,17 +3,19 @@ import { User } from "../models/user.model.js";
 
 export const createTweet = async (req, res) => {
   try {
-    const { description, id } = req.body;
+    const { description } = req.body;
+    const id = req.user;
     if (!description) {
       return res
         .status(401)
         .json({ success: false, message: "description required." });
     }
 
-    await Tweet.create({ description, userId: id });
+    const newTweet = await Tweet.create({ description, userId: id });
     return res.status(201).json({
       message: "Tweet created successfully.",
       success: true,
+      tweet: newTweet,
     });
   } catch (error) {
     console.log(error);
@@ -82,7 +84,7 @@ export const likeOrDislike = async (req, res) => {
 
 // Get user + Following user tweets.
 export const allTweets = async (req, res) => {
-  const userId = req.user.id;
+  const userId = req.user;
   const page = Math.max(1, parseInt(req.query.page) || 1); // Math. max to avoid checking for negative page query.
   const limit = 10;
 
@@ -102,7 +104,8 @@ export const allTweets = async (req, res) => {
     })
       .sort({ createdAt: -1 })
       .skip((page - 1) * limit) // For page = 3. Skip 2*limit = 20 (Skip first 20 tweets).
-      .limit(limit);
+      .limit(limit)
+      .populate("userId", "name");
 
     return res
       .status(200)
@@ -116,7 +119,7 @@ export const allTweets = async (req, res) => {
 
 // Get only Following user tweets.
 export const followingTweets = async (req, res) => {
-  const userId = req.user.id;
+  const userId = req.user;
   const page = Math.max(1, parseInt(req.query.page) || 1); // Math. max to avoid checking for negative page query.
 
   const limit = 10;

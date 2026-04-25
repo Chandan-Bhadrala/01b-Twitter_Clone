@@ -22,7 +22,7 @@ const CreatePost = () => {
       );
       setTweet("");
       console.log(res);
-      dispatch(addTweet(tweet));
+      dispatch(addTweet(res.data.tweet));
     } catch (error) {
       console.log(error);
     }
